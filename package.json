@@ -1,0 +1,21 @@
+{
+  "name": "workout-dev",
+  "version": "1.0.0",
+  "description": "Web application to setup, record, and track the progress of workout sessions.",
+  "main": "server.js",
+  "type":"module",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VitorBarbi/workout-dev.git"
+  },
+  "author": "VitorBarbi",
+  "license": "ISC",
+  "homepage": "https://github.com/VitorBarbi/workout-dev#readme",
+  "devDependencies": {
+    "express": "^4.19.2",
+    "cross-env": "^7.0.3"
+  }
+}
