@@ -30,14 +30,29 @@ Before you begin, ensure you have met the following requirements:
     git clone https://github.com/VitorBarbi/workout-dev.git
     ```
 
-3. Navigate to the project directory, install the dependencies, and start the server:
+3. Navigate to the project directory:
     ```sh
     cd workout-dev
+    ```
+
+4. Create the .env file and set the `SESSION_SECRET` (to secure the session data):
+    ```sh
+    "SESSION_SECRET=your_secret_key" | Out-File -FilePath .env -Encoding UTF8
+    ```
+
+    Replace `your_secret_key` with a secure, random string.
+
+5. Install the dependencies:
+    ```sh
     npm install
+    ```
+    
+6. Start the server:
+    ```sh
     npm run dev
     ```
 
-4. Open your web browser and go to:
+7. Open your web browser and go to:
     ```
     http://localhost:3000
     ```
