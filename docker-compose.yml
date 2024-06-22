@@ -1,0 +1,21 @@
+services:
+  mongodb:
+    image: mongo:7.0.11
+    container_name: mongodb
+    ports:
+      - '27017:27017'
+
+  workout-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: workout-dev
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/workout-dev

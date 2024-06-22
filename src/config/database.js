@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const uri = 'mongodb://127.0.0.1:27017/workout-dev';
+const uri = process.env.MONGO_URI;
 
 /**
  * Asynchronously connects to the MongoDB database.
