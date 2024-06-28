@@ -1,0 +1,15 @@
+<div id="exercise-<%= exerciseNumber %>-group-<%= groupNumber %>">
+    <h3>Exercise <%= exerciseNumber %></h3>
+    <div>
+        <label for="exercise-<%= exerciseNumber %>-group-<%= groupNumber %>-name">Name</label>
+        <input type="text" id="exercise-<%= exerciseNumber %>-group-<%= groupNumber %>-name" name="groups[<%= groupNumber %>][exercises][<%= exerciseNumber %>][name]" required>
+    </div>
+    <div>
+        <label for="exercise-<%= exerciseNumber %>-group-<%= groupNumber %>-sets">Sets</label>
+        <input type="number" id="exercise-<%= exerciseNumber %>-group-<%= groupNumber %>-sets" name="groups[<%= groupNumber %>][exercises][<%= exerciseNumber %>][sets]" min="1" required>
+    </div>
+    <div>
+        <label for="exercise-<%= exerciseNumber %>-group-<%= groupNumber %>-reps">Reps</label>
+        <input type="number" id="exercise-<%= exerciseNumber %>-group-<%= groupNumber %>-reps" name="groups[<%= groupNumber %>][exercises][<%= exerciseNumber %>][reps]" min="1" required>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div id="group-<%= groupNumber %>">
+    <h3>Group <%= groupNumber %></h3>
+    <div>
+        <label for="group-key-<%= groupNumber %>">Group Key</label>
+        <input type="text" id="group-key-<%= groupNumber %>" name="groups[<%= groupNumber %>][key]" required>
+    </div>
+    <div>
+        <label for="target-muscles-<%= groupNumber %>">Target Muscles</label>
+        <input type="text" id="target-muscles-<%= groupNumber %>" name="groups[<%= groupNumber %>][targetMuscles]" required>
+    </div>
+    <div id="group-<%= groupNumber %>-exercises"></div>
+</div>

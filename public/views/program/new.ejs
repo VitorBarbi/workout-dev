@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkoutDev</title>
+</head>
+<body>
+    <header>
+        <h1>WorkoutDev</h1>
+        <a href="/program" class="back-button">Program Home</a>
+    </header>
+    <main>
+        <% if (flash.success) { %>
+            <div class="flash-message success">
+                <%= flash.success %>
+            </div>
+        <% } %>
+        <% if (flash.error) { %>
+            <div class="flash-message error">
+                <%= flash.error %>
+            </div>
+        <% } %>
+        <h2>New Program</h2>
+        <form id="program-form" action="/program" method="POST">
+            <label for="startDate">Start Date</label>
+            <input type="date" id="startDate" name="startDate" required>
+            <div id="groups"></div>
+            <input type="hidden" id="groups-input" name="groups">
+            <button type="button" id="add-group">Add Group</button>
+            <button type="submit">Save Program</button>
+        </form>
+    </main>
+    <script src="/scripts/program/new.js"></script>
+</body>
+</html>

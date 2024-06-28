@@ -14,7 +14,7 @@ import connectDB from './src/config/database.js';
 import initializePassport from './src/config/passport.js';
 import indexRoute from './src/routes/index.js';
 import authRoutes from './src/routes/auth.js';
-
+import programRoutes from './src/routes/program.js';
 
 // Connect to the database
 await connectDB();
@@ -33,29 +33,49 @@ app.set('view engine', 'ejs');
 // Set views directory
 app.set('views', path.join(__dirname, 'public/views'));
 
+// Set static files directory
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Initialize Passport for authentication
 initializePassport(passport);
 
 // Middleware to parse URL-encoded bodies
 app.use(express.urlencoded({ extended: false }));
-// Middleware for flash messages to display temporary messages to users
-app.use(flash());
 // Middleware to handle session management
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false
 }));
+// Middleware for flash messages to display temporary messages to users
+app.use(flash());
 // Initialize Passport middleware for authentication
 app.use(passport.initialize());
 // Middleware to use Passport sessions
 app.use(passport.session());
 // Middleware to override HTTP methods
 app.use(methodOverride('_method'));
+// Middleware to make flash messages available in all views
+app.use((req, res, next) => {
+    // Clone all existing flash messages
+    const flashMessages = req.flash();
+
+    // Iterate over each message type and re-store the messages
+    Object.keys(flashMessages).forEach(type => {
+        flashMessages[type].forEach(message => {
+            req.flash(type, message);
+        });
+    });
+
+    // Assign the cloned messages to res.locals to make them globally accessible in the views
+    res.locals.flash = flashMessages;
+    next();
+});
 
 // Define routes
 app.use('/', indexRoute);
 app.use('/', authRoutes);
+app.use('/', programRoutes);
 
 // Start the server
 app.listen(port, () => {
